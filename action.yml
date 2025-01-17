@@ -25,6 +25,7 @@ inputs:
   version: 
     description: 'Print version'
     default: ''
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -36,6 +37,11 @@ runs:
     - ${{ inputs.verbose }}
     - ${{ inputs.version }}
     - ${{ inputs.command }}
+    
+outputs:
+  stdout:
+    description: 'Standard output of the executed commands.'
+    value: ${{ steps.entrypoint.outputs.stdout }}
 
 branding:
   icon: 'database'
